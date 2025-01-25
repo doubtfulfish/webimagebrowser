@@ -5,7 +5,7 @@ const fs = require("fs");
 // modifiable settings
 const PORT = 80;
 // directory of content you wish to display
-const root = "E:/old/breh/bruh";
+const root = "C:/Users/user/Pictures";
 // display files with these extensions as image
 const displayList = ["png", "jpg", "jpeg", "gif"];
 // exclude from displaying
