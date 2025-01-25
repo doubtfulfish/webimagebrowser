@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Files</title>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=20" />
+        <link rel="manifest" href='data:application/manifest+json,{ "name": "Files", "display": "fullscreen" }' />
+
+        <style>
+            img { max-width: 100%; }
+        </style>
+    </head>
+
+    <body>
+        <div class="path">
+            <a href="/">/root</a>
+            <% let prev = 0 %>
+            <% for (let i = 1; i < data.path.length; i++) { %>
+                <% if (data.path[i] == "/") { %>
+                    <a href="<%= data.path.substring(0, i) %>"><%= data.path.substring(prev, i) %></a>
+                    <% prev = i %>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="folderview">
+            <h3>Folders</h3>
+            <ul>
+                <% data.folders.forEach((folder) => { %>
+                    <li>
+                        <a href="<%= folder %>"><%= folder %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="otherview">
+            <h3>Other</h3>
+            <ul>
+                <% data.other.forEach((file) => { %>
+                    <li>
+                        <a href="<%= file %>"><%= file %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="imageview">
+            <h3>Images</h3>
+            <% data.files.forEach((file) => { %>
+                <div class="image">
+                    <a href="<%= file %>">
+                        <img src="<%= file %>" alt="<%= file %>"/>
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </body>
+</html>
